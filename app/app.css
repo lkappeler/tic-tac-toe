@@ -58,6 +58,8 @@ main {
 	width: 80px;
 	height: 80px;
 	margin: 10px;
+	font-size: 40px;
+	line-height: 40px;
 
 	-moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;
@@ -78,7 +80,6 @@ main {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:13px;
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #154682;
@@ -96,4 +97,10 @@ main {
 .field:active {
 	position:relative;
 	top:1px;
+}
+
+.field:disabled {
+	background: #010101;
+	border-color: #010101;
+	box-shadow:inset 0px 1px 0px 0px #010101;
 }

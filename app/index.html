@@ -18,25 +18,29 @@
 		<!-- Add your site or application content here -->
 		<main ui-view >
 			<div class="battlefield">
+				<p>{{ statusMessage }} {{ currentPlayer.name }}</p>
+				<p>Winner: {{ winner }}</p>
 				<div class="button-group row-1">
-					<button class="button-1 field"></button>
-					<button class="button-2 field"></button>
-					<button class="button-3 field"></button>
+					<button ng-click="setField('one')" ng-disabled=" fields.one != ''" class="button-1 field">{{ fields.one }}</button>
+					<button ng-click="setField('two')" ng-disabled=" fields.two != ''" class="button-2 field">{{ fields.two }}</button>
+					<button ng-click="setField('three')" ng-disabled=" fields.three != ''" class="button-3 field">{{ fields.three }}</button>
 				</div>
 				<div class="button-group row-2">
-					<button class="button-4 field"></button>
-					<button class="button-5 field"></button>
-					<button class="button-6 field"></button>
+					<button ng-click="setField('four')" ng-disabled=" fields.four != ''" class="button-4 field">{{ fields.four }}</button>
+					<button ng-click="setField('five')" ng-disabled=" fields.five != ''" class="button-5 field">{{ fields.five }}</button>
+					<button ng-click="setField('six')" ng-disabled=" fields.six != ''" class="button-6 field">{{ fields.six }}</button>
 				</div>
 				<div class="button-group row-3">
-					<button class="button-7 field"></button>
-					<button class="button-8 field"></button>
-					<button class="button-9 field"></button>
+					<button ng-click="setField('seven')" ng-disabled=" fields.seven != ''" class="button-7 field">{{ fields.seven }}</button>
+					<button ng-click="setField('eight')" ng-disabled=" fields.eight != ''" class="button-8 field">{{ fields.eight }}</button>
+					<button ng-click="setField('nine')" ng-disabled=" fields.nine != ''" class="button-9 field">{{ fields.nine }}</button>
 				</div>
 			</div>
 		</main>
 
-		<footer>
+
+		<footer >
+			{{ test }}
 			<span>{{appName}} : {{version}}</span>
 		</footer>
 
