@@ -35,6 +35,25 @@ function ($scope, $http) {
 		}
 	}
 
+	var wins = [
+		// horizontal
+		['one', 'two', 'three'], ['four', 'five', 'six'], ['seven', 'eight', 'nine'],
+		// vertical
+		['one', 'four', 'seven'], ['two', 'five', 'eight'], ['three', 'six', 'nine'],
+		// diagonal
+		['one', 'five', 'nine'], ['three', 'five', 'seven']
+	];
+
+	function checkWin() {
+		for (var p in wins) {
+			var tmp = $scope.fields[wins[p][0]] + $scope.fields[wins[p][1]] + $scope.fields[wins[p][2]];
+			if (tmp === 'XXX' || tmp === 'OOO') {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	$scope.fields = {
 		one: '',
 		two: '',
@@ -49,13 +68,24 @@ function ($scope, $http) {
 
 	$scope.currentPlayer = players[0];
 	$scope.statusMessage = 'Currently playing: ';
+	$scope.round = 1;
 
 	$scope.setField = function (fieldId) {
-		$scope.fields[fieldId] = $scope.currentPlayer.symbol;
-		togglePlayer();
+
+		if (!checkWin()) {
+			$scope.fields[fieldId] = $scope.currentPlayer.symbol;
+			if (checkWin()) {
+				$scope.statusMessage = 'Finished - Winner: ';
+			} else if ($scope.round === 9) {
+				$scope.statusMessage = 'Draw!';
+			} else {
+				togglePlayer();
+				$scope.round++;
+			}
+		}
+
 	};
 
-	// TODO: Check for winner
 	// TODO: CSS
 
 }]);
