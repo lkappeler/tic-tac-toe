@@ -35,7 +35,7 @@ function ($scope, $http) {
 		}
 	}
 
-	var wins = [
+	var winRows = [
 		// horizontal
 		['one', 'two', 'three'], ['four', 'five', 'six'], ['seven', 'eight', 'nine'],
 		// vertical
@@ -45,9 +45,9 @@ function ($scope, $http) {
 	];
 
 	function checkWin() {
-		for (var p in wins) {
-			var tmp = $scope.fields[wins[p][0]] + $scope.fields[wins[p][1]] + $scope.fields[wins[p][2]];
-			if (tmp === 'XXX' || tmp === 'OOO') {
+		for (var i in winRows) {
+			var winRow = $scope.fields[winRows[i][0]] + $scope.fields[winRows[i][1]] + $scope.fields[winRows[i][2]];
+			if (winRow === 'XXX' || winRow === 'OOO') {
 				return true;
 			}
 		}
@@ -69,13 +69,14 @@ function ($scope, $http) {
 	$scope.currentPlayer = players[0];
 	$scope.statusMessage = 'Currently playing: ';
 	$scope.round = 1;
+	$scope.gameFinished = false;
 
 	$scope.setField = function (fieldId) {
 
 		if (!checkWin()) {
 			$scope.fields[fieldId] = $scope.currentPlayer.symbol;
 			if (checkWin()) {
-				$scope.statusMessage = 'Finished - Winner: ';
+				$scope.statusMessage = '<b>Finished</b>- Winner: ';
 			} else if ($scope.round === 9) {
 				$scope.statusMessage = 'Draw!';
 			} else {
@@ -84,6 +85,14 @@ function ($scope, $http) {
 			}
 		}
 
+	};
+
+	$scope.resetGame = function () {
+		for (var field in $scope.fields) {
+			$scope.fields[field] = '';
+		}
+		$scope.round = 1;
+		$scope.currentPlayer = players[0];
 	};
 
 	// TODO: CSS
