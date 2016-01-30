@@ -54,12 +54,12 @@ main {
 	padding: 20px;
 }
 
-.field {
+.field, .reset {
 	width: 80px;
 	height: 80px;
 	margin: 10px;
-	font-size: 40px;
-	line-height: 40px;
+	font-size: 50px;
+	line-height: 10px;
 
 	-moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;
@@ -100,7 +100,22 @@ main {
 }
 
 .field:disabled {
-	background: #010101;
-	border-color: #010101;
+	background: #aa0000;
+	border-color: #0f0f0f;
 	box-shadow:inset 0px 1px 0px 0px #010101;
+}
+
+
+.toolbar {
+	align: center;
+	width: 100%;
+}
+
+
+.button-reset {
+	font-size: 20px;
+	height: 40px;
+	width: 290px;
+
+
 }
